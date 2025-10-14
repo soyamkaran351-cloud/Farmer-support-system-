@@ -3,13 +3,16 @@ import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Search, TrendingUp } from 'lucide-react';
+import { Search, TrendingUp, ArrowLeft } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 export default function Market() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [prices, setPrices] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
@@ -46,8 +49,12 @@ export default function Market() {
       <Header />
       
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <div className="flex items-center gap-4 mb-8">
+          <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+          <h1 className="text-4xl font-bold flex-1 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             {t('marketPrices')}
           </h1>
           <TrendingUp className="h-12 w-12 text-accent" />

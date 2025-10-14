@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Cloud, CloudRain, Sun, Wind, Droplets } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Cloud, CloudRain, Sun, Wind, Droplets, ArrowLeft } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 export default function Weather() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [forecast, setForecast] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -59,9 +62,15 @@ export default function Weather() {
       <Header />
       
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          {t('weatherForecast')}
-        </h1>
+        <div className="flex items-center gap-4 mb-8">
+          <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+          <h1 className="text-4xl font-bold flex-1 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            {t('weatherForecast')}
+          </h1>
+        </div>
 
         {loading ? (
           <div className="text-center py-12">

@@ -4,13 +4,15 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Upload, Camera, Loader2 } from 'lucide-react';
+import { Upload, Camera, Loader2, ArrowLeft, BookOpen } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Disease() {
   const { t } = useLanguage();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const [loading, setLoading] = useState(false);
@@ -75,9 +77,23 @@ export default function Disease() {
       <Header />
       
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          {t('detectDisease')}
-        </h1>
+        <div className="flex items-center gap-4 mb-8">
+          <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              {t('detectDisease')}
+            </h1>
+          </div>
+          <Link to="/disease-gallery">
+            <Button variant="outline" size="sm">
+              <BookOpen className="h-4 w-4 mr-2" />
+              Disease Reference
+            </Button>
+          </Link>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Card className="shadow-elevated animate-scale-in">

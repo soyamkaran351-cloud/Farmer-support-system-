@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Weather from "./pages/Weather";
 import Market from "./pages/Market";
 import Disease from "./pages/Disease";
+import DiseaseGallery from "./pages/DiseaseGallery";
 import News from "./pages/News";
 import Schemes from "./pages/Schemes";
 import Techniques from "./pages/Techniques";
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/schemes" element={<ProtectedRoute><Schemes /></ProtectedRoute>} />
               <Route path="/techniques" element={<ProtectedRoute><Techniques /></ProtectedRoute>} />
               <Route path="/chatbot" element={<ProtectedRoute><Chatbot /></ProtectedRoute>} />
+              <Route path="/disease-gallery" element={<ProtectedRoute><DiseaseGallery /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AuthProvider>

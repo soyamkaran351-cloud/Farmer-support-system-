@@ -1,10 +1,13 @@
 import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Lightbulb, Sprout, Droplets, Bug, Sun } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Lightbulb, Sprout, Droplets, Bug, Sun, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Techniques() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const techniques = [
     {
@@ -65,8 +68,12 @@ export default function Techniques() {
       <Header />
       
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <div className="flex items-center gap-4 mb-8">
+          <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+          <h1 className="text-4xl font-bold flex-1 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             {t('farmingTips')}
           </h1>
           <Lightbulb className="h-12 w-12 text-accent" />
