@@ -1,0 +1,10 @@
+project_id = "jmjreqzgkruanmwswutm"
+
+[functions.farmer-chatbot]
+verify_jwt = false
+
+[functions.weather-forecast]
+verify_jwt = false
+
+[functions.detect-disease]
+verify_jwt = false
