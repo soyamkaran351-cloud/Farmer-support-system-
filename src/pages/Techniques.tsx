@@ -2,7 +2,7 @@ import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Lightbulb, Sprout, Droplets, Bug, Sun, ArrowLeft } from 'lucide-react';
+import { Lightbulb, Sprout, Droplets, Bug, Sun, ArrowLeft, Fish, BugOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Techniques() {
@@ -51,6 +51,20 @@ export default function Techniques() {
       description: 'Use natural fertilizers and avoid synthetic chemicals for healthier crops and environment.',
       icon: Lightbulb,
       color: 'from-teal-500 to-green-500'
+    },
+    {
+      title: 'Fisheries',
+      hindi: 'मत्स्य पालन',
+      description: 'Cultivate fish like Rohu, Catla, Tilapia, and Prawns in ponds for protein-rich food and income.',
+      icon: Fish,
+      color: 'from-indigo-500 to-blue-500'
+    },
+    {
+      title: 'Beekeeping',
+      hindi: 'मधुमक्खी पालन',
+      description: 'Raise Apis Mellifera (Italian) and Apis Cerana (Indian) bees for honey, pollination, and wax.',
+      icon: BugOff,
+      color: 'from-amber-500 to-yellow-500'
     }
   ];
 
