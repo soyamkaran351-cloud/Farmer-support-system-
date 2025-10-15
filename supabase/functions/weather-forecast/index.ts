@@ -13,7 +13,7 @@ serve(async (req) => {
   try {
     const { latitude = 28.6139, longitude = 77.2090 } = await req.json().catch(() => ({})); // Default: New Delhi
     
-    const apiKey = Deno.env.get('OPENWEATHER_API_KEY');
+    const apiKey = Deno.env.get('06b5f34ae79d01940546a1dbffd790c8');
     
     if (!apiKey) {
       console.log('OpenWeather API key not found, using mock data');
