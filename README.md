@@ -59,9 +59,8 @@ Voice support for low-literacy users.
 Provides personalized crop and market advice
 
 ## you can see my project by clicking the link below:
-**URL**: https://lovable.dev/projects/39079f9b-560f-4a81-b6a2-a111a231244e
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/39079f9b-560f-4a81-b6a2-a111a231244e) to see the project 
+https://68efaace1150334fee4a4560--farmer-support-system.netlify.app/
 
 ## What technologies are used for this project?
 
@@ -74,4 +73,4 @@ This project is built with:
 - Tailwind CSS
   
 ## About database 
-we have used supabase got the data storage and other operations 
+we have used supabase for data storage and other operations 
