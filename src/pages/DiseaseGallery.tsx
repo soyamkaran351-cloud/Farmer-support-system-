@@ -2,7 +2,9 @@ import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { AlertCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { AlertCircle, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import wheatRust from '@/assets/disease-wheat-rust.jpg';
 import tomatoBlight from '@/assets/disease-tomato-blight.jpg';
 import riceBlight from '@/assets/disease-rice-blight.jpg';
@@ -12,6 +14,7 @@ import potatoBlight from '@/assets/disease-potato-blight.jpg';
 
 export default function DiseaseGallery() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const diseases = [
     {
@@ -85,8 +88,12 @@ export default function DiseaseGallery() {
       <Header />
       
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <div>
+        <div className="flex items-center gap-4 mb-8">
+          <Button variant="ghost" size="sm" onClick={() => navigate('/disease')}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+          <div className="flex-1">
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Common Crop Diseases
             </h1>

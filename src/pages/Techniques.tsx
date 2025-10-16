@@ -6,6 +6,12 @@ import { Lightbulb, Sprout, Droplets, Bug, Sun, ArrowLeft, Fish, BugOff } from '
 import { useNavigate } from 'react-router-dom';
 import fisheriesImg from '@/assets/fisheries.jpg';
 import beekeepingImg from '@/assets/beekeeping.jpg';
+import cropRotationImg from '@/assets/crop-rotation.jpg';
+import dripIrrigationImg from '@/assets/drip-irrigation.jpg';
+import pestManagementImg from '@/assets/pest-management.jpg';
+import mulchingImg from '@/assets/mulching.jpg';
+import soilTestingImg from '@/assets/soil-testing.jpg';
+import organicFarmingImg from '@/assets/organic-farming.jpg';
 
 export default function Techniques() {
   const { t } = useLanguage();
@@ -15,49 +21,55 @@ export default function Techniques() {
     {
       title: 'Crop Rotation',
       hindi: 'फसल चक्रण',
-      description: 'Alternate different crops in the same field to improve soil health and reduce pests.',
+      description: 'Systematically alternate different crops in the same field across seasons to maintain soil fertility and break pest cycles. Rotate between cereals (wheat/rice), legumes (pulses), and oilseeds. Benefits include improved soil structure, reduced pest buildup, better nutrient management, and increased yields by 15-20%. Follow a 3-4 year rotation plan for best results.',
       icon: Sprout,
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-green-500 to-emerald-500',
+      image: cropRotationImg
     },
     {
       title: 'Drip Irrigation',
       hindi: 'ड्रिप सिंचाई',
-      description: 'Save water by delivering it directly to plant roots through a system of tubes and emitters.',
+      description: 'Modern water-saving irrigation system that delivers water directly to plant roots through a network of pipes, valves, and emitters. Saves 30-70% water compared to flood irrigation, reduces weed growth, prevents soil erosion, and increases crop yields by 20-50%. Ideal for water-scarce regions and high-value crops like vegetables, fruits, and sugarcane.',
       icon: Droplets,
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-cyan-500',
+      image: dripIrrigationImg
     },
     {
       title: 'Integrated Pest Management',
       hindi: 'एकीकृत कीट प्रबंधन',
-      description: 'Use natural predators, crop rotation, and minimal chemical pesticides to control pests.',
+      description: 'Holistic approach combining biological controls (natural predators like ladybugs, parasitic wasps), cultural practices (crop rotation, trap crops), physical barriers, and minimal chemical pesticides only when necessary. Reduces pesticide costs by 30-40%, protects beneficial insects, prevents pest resistance, and produces safer, chemical-free crops for better market prices.',
       icon: Bug,
-      color: 'from-red-500 to-orange-500'
+      color: 'from-red-500 to-orange-500',
+      image: pestManagementImg
     },
     {
       title: 'Mulching',
       hindi: 'मल्चिंग',
-      description: 'Cover soil with organic material to retain moisture, suppress weeds, and improve fertility.',
+      description: 'Cover soil surface with organic materials (straw, dried leaves, grass clippings) or plastic sheets to conserve moisture, regulate soil temperature, suppress weeds, and improve soil fertility. Organic mulch adds nutrients as it decomposes. Reduces water requirement by 25-30%, minimizes soil erosion, and increases crop yields. Apply 5-10 cm thick layer around plants.',
       icon: Sun,
-      color: 'from-yellow-500 to-amber-500'
+      color: 'from-yellow-500 to-amber-500',
+      image: mulchingImg
     },
     {
       title: 'Soil Testing',
       hindi: 'मिट्टी परीक्षण',
-      description: 'Regular soil testing helps determine nutrient levels and pH for optimal crop growth.',
+      description: 'Scientific analysis of soil samples to determine pH levels, nutrient content (N, P, K), organic matter, and micronutrients. Conduct tests before sowing season every 2-3 years. Helps optimize fertilizer application, reduce input costs by 20-25%, prevent over-fertilization, and improve crop health. Government soil testing labs available at nominal charges across districts.',
       icon: Sprout,
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-purple-500 to-pink-500',
+      image: soilTestingImg
     },
     {
       title: 'Organic Farming',
       hindi: 'जैविक खेती',
-      description: 'Use natural fertilizers and avoid synthetic chemicals for healthier crops and environment.',
+      description: 'Sustainable farming using natural fertilizers (compost, vermicompost, green manure), bio-pesticides, and traditional practices. Avoids synthetic chemicals, promotes biodiversity, improves soil health long-term, and produces premium quality crops. Organic products fetch 20-30% higher prices. Certification available through government programs. Transition period typically 2-3 years.',
       icon: Lightbulb,
-      color: 'from-teal-500 to-green-500'
+      color: 'from-teal-500 to-green-500',
+      image: organicFarmingImg
     },
     {
       title: 'Fisheries',
       hindi: 'मत्स्य पालन',
-      description: 'Cultivate fish like Rohu, Catla, Tilapia, and Prawns in ponds for protein-rich food and income.',
+      description: 'Aquaculture of fish species in ponds, tanks, or cages for protein-rich food production and additional income. Popular varieties: Rohu (Labeo rohita), Catla (Catla catla), Tilapia, and Prawns. Requires 0.1-2 hectare pond with proper water management (pH 7-8, dissolved oxygen >5 mg/L), regular feeding (3-5% body weight), and disease monitoring. Integrated farming with poultry or crops maximizes land use.',
       icon: Fish,
       color: 'from-indigo-500 to-blue-500',
       image: fisheriesImg
@@ -65,7 +77,7 @@ export default function Techniques() {
     {
       title: 'Beekeeping',
       hindi: 'मधुमक्खी पालन',
-      description: 'Raise Apis Mellifera (Italian) and Apis Cerana (Indian) bees for honey, pollination, and wax.',
+      description: 'Apiculture for honey production, beeswax, royal jelly, and crop pollination services. Apis Mellifera (European, 25-40 kg honey/hive/year) and Apis Cerana (Indian, 8-12 kg/hive/year) are common species. Requires 1-2 acre flowering area, wooden hives (Langstroth boxes), protective gear, and seasonal management. One colony can pollinate 2-3 acres, increasing crop yields by 30%. Low investment with good returns.',
       icon: BugOff,
       color: 'from-amber-500 to-yellow-500',
       image: beekeepingImg
