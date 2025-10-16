@@ -33,13 +33,21 @@ serve(async (req) => {
             content: [
               {
                 type: 'text',
-                text: `Analyze this crop image and identify any diseases or health issues. Provide:
-1. Disease name (if any)
-2. Confidence level (0-100%)
-3. Detailed recommendations for treatment
-4. Prevention tips
+                text: `You are an expert agricultural pathologist. Analyze this crop image and identify any diseases or health issues.
 
-If the crop is healthy, say so. Be specific and practical.`
+Provide your response in this exact format:
+
+**Disease Name:** [Name of the disease or "Healthy" if no disease detected]
+
+**Confidence:** [Your confidence level as a percentage, e.g., 85%]
+
+**Treatment:**
+[Specific treatment steps and recommended pesticides/fungicides with application rates]
+
+**Recommendations:**
+[Additional care instructions, prevention tips, and follow-up actions]
+
+Be specific, practical, and use terminology familiar to Indian farmers.`
               },
               {
                 type: 'image_url',
@@ -94,17 +102,22 @@ If the crop is healthy, say so. Be specific and practical.`
 });
 
 function extractDiseaseName(text: string): string {
-  // Simple extraction - in production, use structured output
-  const match = text.match(/disease[:\s]+([^\n.]+)/i);
+  const match = text.match(/\*\*Disease Name:\*\*\s*([^\n]+)/i) || 
+                text.match(/disease[:\s]+([^\n.]+)/i);
   return match ? match[1].trim() : 'Analysis completed';
 }
 
 function extractConfidence(text: string): number {
-  const match = text.match(/(\d+)%/);
+  const match = text.match(/\*\*Confidence:\*\*\s*(\d+)%/i) || 
+                text.match(/(\d+)%/);
   return match ? parseInt(match[1]) : 85;
 }
 
 function extractTreatment(text: string): string {
-  const match = text.match(/treatment[:\s]+([^\n]+)/i);
-  return match ? match[1].trim() : 'See recommendations above';
+  const treatmentMatch = text.match(/\*\*Treatment:\*\*\s*([\s\S]*?)(?=\*\*Recommendations:\*\*|$)/i);
+  if (treatmentMatch) {
+    return treatmentMatch[1].trim();
+  }
+  const altMatch = text.match(/treatment[:\s]+([^\n]+)/i);
+  return altMatch ? altMatch[1].trim() : 'See full recommendations below';
 }

@@ -13,14 +13,58 @@ export default function Weather() {
   const navigate = useNavigate();
   const [forecast, setForecast] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
+  const [locationName, setLocationName] = useState<string>('');
+  const [gettingLocation, setGettingLocation] = useState(false);
 
   useEffect(() => {
-    fetchWeather();
+    getUserLocation();
   }, []);
 
-  const fetchWeather = async () => {
+  const getUserLocation = () => {
+    setGettingLocation(true);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ latitude, longitude });
+          fetchLocationName(latitude, longitude);
+          fetchWeather(latitude, longitude);
+          setGettingLocation(false);
+        },
+        (error) => {
+          console.error('Error getting location:', error);
+          toast.error('Unable to get your location. Using default location.');
+          fetchWeather();
+          setGettingLocation(false);
+        }
+      );
+    } else {
+      toast.error('Geolocation is not supported by your browser.');
+      fetchWeather();
+      setGettingLocation(false);
+    }
+  };
+
+  const fetchLocationName = async (lat: number, lon: number) => {
     try {
-      const { data, error } = await supabase.functions.invoke('weather-forecast');
+      const response = await fetch(
+        `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=06b5f34ae79d01940546a1dbffd790c8`
+      );
+      const data = await response.json();
+      if (data && data[0]) {
+        setLocationName(`${data[0].name}, ${data[0].state || data[0].country}`);
+      }
+    } catch (error) {
+      console.error('Error fetching location name:', error);
+    }
+  };
+
+  const fetchWeather = async (latitude?: number, longitude?: number) => {
+    try {
+      const { data, error } = await supabase.functions.invoke('weather-forecast', {
+        body: { latitude, longitude }
+      });
       
       if (error) throw error;
       
@@ -67,15 +111,20 @@ export default function Weather() {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
           </Button>
-          <h1 className="text-4xl font-bold flex-1 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            {t('weatherForecast')}
-          </h1>
+          <div className="flex-1 text-center">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              {t('weatherForecast')}
+            </h1>
+            {locationName && (
+              <p className="text-muted-foreground mt-2">📍 {locationName}</p>
+            )}
+          </div>
         </div>
 
-        {loading ? (
+        {loading || gettingLocation ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-            <p className="mt-4">{t('loading')}</p>
+            <p className="mt-4">{gettingLocation ? 'Getting your location...' : t('loading')}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

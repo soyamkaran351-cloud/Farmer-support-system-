@@ -16,10 +16,34 @@ export default function Market() {
   const [prices, setPrices] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+  const [userState, setUserState] = useState<string>('');
 
   useEffect(() => {
+    getUserLocation();
     fetchPrices();
   }, []);
+
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          try {
+            const response = await fetch(
+              `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=06b5f34ae79d01940546a1dbffd790c8`
+            );
+            const data = await response.json();
+            if (data && data[0]) {
+              setUserState(data[0].state || '');
+            }
+          } catch (error) {
+            console.error('Error fetching location:', error);
+          }
+        },
+        (error) => console.error('Error getting location:', error)
+      );
+    }
+  };
 
   const fetchPrices = async () => {
     try {
@@ -38,11 +62,24 @@ export default function Market() {
     }
   };
 
-  const filteredPrices = prices.filter(price =>
-    price.crop_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    price.market_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    price.state.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredPrices = prices.filter(price => {
+    const matchesSearch = price.crop_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      price.market_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      price.state.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    // If user has location, prioritize local state prices first
+    if (userState && !searchTerm) {
+      return matchesSearch;
+    }
+    return matchesSearch;
+  }).sort((a, b) => {
+    // Sort by user's state first if available
+    if (userState) {
+      if (a.state.toLowerCase().includes(userState.toLowerCase())) return -1;
+      if (b.state.toLowerCase().includes(userState.toLowerCase())) return 1;
+    }
+    return 0;
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -54,9 +91,14 @@ export default function Market() {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
           </Button>
-          <h1 className="text-4xl font-bold flex-1 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            {t('marketPrices')}
-          </h1>
+          <div className="flex-1 text-center">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              {t('marketPrices')}
+            </h1>
+            {userState && (
+              <p className="text-muted-foreground mt-2">📍 Showing prices near {userState}</p>
+            )}
+          </div>
           <TrendingUp className="h-12 w-12 text-accent" />
         </div>
 

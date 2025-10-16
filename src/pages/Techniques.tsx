@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Lightbulb, Sprout, Droplets, Bug, Sun, ArrowLeft, Fish, BugOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import fisheriesImg from '@/assets/fisheries.jpg';
+import beekeepingImg from '@/assets/beekeeping.jpg';
 
 export default function Techniques() {
   const { t } = useLanguage();
@@ -57,14 +59,16 @@ export default function Techniques() {
       hindi: 'मत्स्य पालन',
       description: 'Cultivate fish like Rohu, Catla, Tilapia, and Prawns in ponds for protein-rich food and income.',
       icon: Fish,
-      color: 'from-indigo-500 to-blue-500'
+      color: 'from-indigo-500 to-blue-500',
+      image: fisheriesImg
     },
     {
       title: 'Beekeeping',
       hindi: 'मधुमक्खी पालन',
       description: 'Raise Apis Mellifera (Italian) and Apis Cerana (Indian) bees for honey, pollination, and wax.',
       icon: BugOff,
-      color: 'from-amber-500 to-yellow-500'
+      color: 'from-amber-500 to-yellow-500',
+      image: beekeepingImg
     }
   ];
 
@@ -95,8 +99,17 @@ export default function Techniques() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {techniques.map((technique, idx) => (
-            <Card key={idx} className="hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 animate-scale-in"
+            <Card key={idx} className="hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 animate-scale-in overflow-hidden"
               style={{ animationDelay: `${idx * 0.05}s` }}>
+              {technique.image && (
+                <div className="h-48 w-full overflow-hidden">
+                  <img 
+                    src={technique.image} 
+                    alt={technique.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
               <CardHeader>
                 <div className={`h-14 w-14 rounded-lg bg-gradient-to-br ${technique.color} flex items-center justify-center mb-3`}>
                   <technique.icon className="h-8 w-8 text-white" />
