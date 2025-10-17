@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Newspaper, ArrowLeft } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
-import { toast } from 'sonner';
+import { ArrowLeft, Newspaper } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function News() {
   const { t } = useLanguage();
@@ -25,12 +24,11 @@ export default function News() {
         .from('farmer_news')
         .select('*')
         .order('published_at', { ascending: false });
-      
+
       if (error) throw error;
       setNews(data || []);
     } catch (error) {
       console.error('Error fetching news:', error);
-      toast.error('Failed to load news');
     } finally {
       setLoading(false);
     }
@@ -38,13 +36,12 @@ export default function News() {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      'Schemes': 'bg-blue-500',
-      'Weather': 'bg-green-500',
+      'General': 'bg-blue-500',
       'Technology': 'bg-purple-500',
-      'Market': 'bg-orange-500',
-      'default': 'bg-gray-500'
+      'Market': 'bg-green-500',
+      'Policy': 'bg-orange-500'
     };
-    return colors[category] || colors.default;
+    return colors[category] || 'bg-gray-500';
   };
 
   return (
@@ -57,37 +54,48 @@ export default function News() {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
           </Button>
-          <h1 className="text-4xl font-bold flex-1 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            {t('latestNews')}
-          </h1>
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Latest News
+            </h1>
+            <p className="text-muted-foreground">Stay updated with agriculture news</p>
+          </div>
           <Newspaper className="h-12 w-12 text-accent" />
         </div>
 
         {loading ? (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-            <p className="mt-4">{t('loading')}</p>
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <span className="ml-3 text-muted-foreground">Loading news...</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {news.map((item, idx) => (
-              <Card key={item.id} className="hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 animate-scale-in"
+            {news.map((article, idx) => (
+              <Card key={article.id} className="hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 animate-scale-in overflow-hidden"
                 style={{ animationDelay: `${idx * 0.05}s` }}>
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-2">
-                    <Badge className={getCategoryColor(item.category)}>
-                      {item.category}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">
-                      {new Date(item.published_at).toLocaleDateString()}
-                    </span>
+                {article.image_url && (
+                  <div className="h-48 w-full overflow-hidden">
+                    <img 
+                      src={article.image_url} 
+                      alt={article.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
                   </div>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
+                )}
+                <CardHeader>
+                  <Badge className={`${getCategoryColor(article.category)} w-fit mb-2`}>
+                    {article.category}
+                  </Badge>
+                  <CardTitle className="text-lg line-clamp-2">{article.title}</CardTitle>
+                  <p className="text-xs text-muted-foreground">
+                    {new Date(article.published_at).toLocaleDateString()}
+                  </p>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground line-clamp-4">
-                    {item.content}
-                  </p>
+                  <p className="text-sm line-clamp-3">{article.content}</p>
                 </CardContent>
               </Card>
             ))}

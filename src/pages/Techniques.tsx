@@ -136,6 +136,23 @@ export default function Techniques() {
           ))}
         </div>
 
+        <Card className="shadow-elevated animate-fade-in mb-8 bg-gradient-to-r from-primary/10 to-accent/10 border-primary">
+          <CardHeader>
+            <CardTitle className="text-2xl flex items-center gap-2">
+              <Sprout className="h-6 w-6 text-primary" />
+              Explore Modern Farming Technologies
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground mb-4">
+              Discover advanced farming methods like Hydroponics, Mushroom Farming, Vertical Farming, Aquaponics, and more for higher profits and sustainable agriculture.
+            </p>
+            <Button onClick={() => navigate('/crop-guide')} className="bg-gradient-to-r from-primary to-accent">
+              View Crop Guide <Sprout className="ml-2 h-4 w-4" />
+            </Button>
+          </CardContent>
+        </Card>
+
         <Card className="shadow-elevated animate-fade-in">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">

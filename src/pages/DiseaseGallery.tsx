@@ -11,6 +11,26 @@ import riceBlight from '@/assets/disease-rice-blight.jpg';
 import cottonBollworm from '@/assets/disease-cotton-bollworm.jpg';
 import sugarcaneRot from '@/assets/disease-sugarcane-rot.jpg';
 import potatoBlight from '@/assets/disease-potato-blight.jpg';
+import cornBlight from '@/assets/disease-corn-blight.jpg';
+import mangoAnthracnose from '@/assets/disease-mango-anthracnose.jpg';
+import chiliCurl from '@/assets/disease-chili-curl.jpg';
+import bananaPanama from '@/assets/disease-banana-panama.jpg';
+import onionBlotch from '@/assets/disease-onion-blotch.jpg';
+import brinjalBorer from '@/assets/disease-brinjal-borer.jpg';
+import cucumberMildew from '@/assets/disease-cucumber-mildew.jpg';
+import cabbageRot from '@/assets/disease-cabbage-rot.jpg';
+import grapeMildew from '@/assets/disease-grape-mildew.jpg';
+import appleScab from '@/assets/disease-apple-scab.jpg';
+import papayaMosaic from '@/assets/disease-papaya-mosaic.jpg';
+import carrotBlight from '@/assets/disease-carrot-blight.jpg';
+import okraMosaic from '@/assets/disease-okra-mosaic.jpg';
+import cauliflowerRot from '@/assets/disease-cauliflower-rot.jpg';
+import groundnutSpot from '@/assets/disease-groundnut-spot.jpg';
+import soybeanRust from '@/assets/disease-soybean-rust.jpg';
+import strawberryScorch from '@/assets/disease-strawberry-scorch.jpg';
+import gingerRot from '@/assets/disease-ginger-rot.jpg';
+import citrusCanker from '@/assets/disease-citrus-canker.jpg';
+import pepperRot from '@/assets/disease-pepper-rot.jpg';
 
 export default function DiseaseGallery() {
   const { t } = useLanguage();
@@ -75,6 +95,206 @@ export default function DiseaseGallery() {
       symptoms: 'Dark brown lesions on leaves and tubers',
       treatment: 'Mancozeb or Chlorothalonil fungicides',
       prevention: 'Certified disease-free seeds, hill up plants, remove infected plants',
+      severity: 'High'
+    },
+    {
+      name: 'Corn Leaf Blight',
+      hindi: 'मक्का पत्ती झुलसा',
+      crop: 'Corn',
+      image: cornBlight,
+      symptoms: 'Long brown lesions on corn leaves',
+      treatment: 'Fungicide sprays, resistant hybrids',
+      prevention: 'Crop rotation, balanced fertilization, timely sowing',
+      severity: 'High'
+    },
+    {
+      name: 'Mango Anthracnose',
+      hindi: 'आम का एंथ्रेक्नोज',
+      crop: 'Mango',
+      image: mangoAnthracnose,
+      symptoms: 'Black spots on fruits and leaves',
+      treatment: 'Copper fungicides, carbendazim spray',
+      prevention: 'Prune trees for air circulation, remove infected fruits',
+      severity: 'High'
+    },
+    {
+      name: 'Chili Leaf Curl',
+      hindi: 'मिर्च पत्ती मरोड़',
+      crop: 'Chili',
+      image: chiliCurl,
+      symptoms: 'Curled and yellowing leaves, stunted growth',
+      treatment: 'Remove infected plants, control whitefly vectors',
+      prevention: 'Use virus-free seeds, install yellow sticky traps',
+      severity: 'High'
+    },
+    {
+      name: 'Banana Panama Disease',
+      hindi: 'केला पनामा रोग',
+      crop: 'Banana',
+      image: bananaPanama,
+      symptoms: 'Yellowing and wilting leaves, vascular discoloration',
+      treatment: 'No chemical cure, plant resistant varieties',
+      prevention: 'Use disease-free planting material, soil fumigation',
+      severity: 'High'
+    },
+    {
+      name: 'Onion Purple Blotch',
+      hindi: 'प्याज बैंगनी धब्बा',
+      crop: 'Onion',
+      image: onionBlotch,
+      symptoms: 'Purple lesions on leaves with concentric rings',
+      treatment: 'Mancozeb or chlorothalonil spray',
+      prevention: 'Crop rotation, avoid overhead irrigation, proper spacing',
+      severity: 'Medium'
+    },
+    {
+      name: 'Brinjal Fruit Borer',
+      hindi: 'बैंगन फल छेदक',
+      crop: 'Brinjal',
+      image: brinjalBorer,
+      symptoms: 'Holes in fruits, larval presence inside fruits',
+      treatment: 'Pheromone traps, neem-based pesticides',
+      prevention: 'Regular monitoring, remove infested fruits, biological control',
+      severity: 'High'
+    },
+    {
+      name: 'Cucumber Downy Mildew',
+      hindi: 'खीरा कुहासा फफूंदी',
+      crop: 'Cucumber',
+      image: cucumberMildew,
+      symptoms: 'Yellow angular spots on upper leaf surface',
+      treatment: 'Metalaxyl or cymoxanil fungicides',
+      prevention: 'Adequate plant spacing, drip irrigation, resistant varieties',
+      severity: 'Medium'
+    },
+    {
+      name: 'Cabbage Black Rot',
+      hindi: 'पत्तागोभी काला सड़न',
+      crop: 'Cabbage',
+      image: cabbageRot,
+      symptoms: 'V-shaped lesions from leaf margins, blackened veins',
+      treatment: 'Copper-based bactericides, remove infected plants',
+      prevention: 'Hot water seed treatment, crop rotation, avoid overhead watering',
+      severity: 'High'
+    },
+    {
+      name: 'Grape Downy Mildew',
+      hindi: 'अंगूर कुहासा फफूंदी',
+      crop: 'Grape',
+      image: grapeMildew,
+      symptoms: 'White fungal growth on leaves, brown spots',
+      treatment: 'Metalaxyl or copper fungicides',
+      prevention: 'Proper canopy management, avoid overhead irrigation',
+      severity: 'High'
+    },
+    {
+      name: 'Apple Scab',
+      hindi: 'सेब का पपड़ी रोग',
+      crop: 'Apple',
+      image: appleScab,
+      symptoms: 'Dark scaly lesions on fruits and leaves',
+      treatment: 'Captan or myclobutanil fungicides',
+      prevention: 'Remove fallen leaves, resistant varieties, proper pruning',
+      severity: 'High'
+    },
+    {
+      name: 'Papaya Mosaic Virus',
+      hindi: 'पपीता मोज़ेक वायरस',
+      crop: 'Papaya',
+      image: papayaMosaic,
+      symptoms: 'Mottled yellow patterns on leaves, distorted fruits',
+      treatment: 'No cure, control aphid vectors',
+      prevention: 'Use virus-free seeds, remove infected plants, control aphids',
+      severity: 'High'
+    },
+    {
+      name: 'Carrot Leaf Blight',
+      hindi: 'गाजर पत्ती झुलसा',
+      crop: 'Carrot',
+      image: carrotBlight,
+      symptoms: 'Brown necrotic spots on carrot foliage',
+      treatment: 'Chlorothalonil or mancozeb fungicides',
+      prevention: 'Crop rotation, proper drainage, resistant varieties',
+      severity: 'Medium'
+    },
+    {
+      name: 'Okra Yellow Vein Mosaic',
+      hindi: 'भिंडी पीली नस मोज़ेक',
+      crop: 'Okra',
+      image: okraMosaic,
+      symptoms: 'Yellowing of leaf veins, reduced fruit size',
+      treatment: 'Control whitefly vectors with insecticides',
+      prevention: 'Use resistant varieties, yellow sticky traps, early sowing',
+      severity: 'High'
+    },
+    {
+      name: 'Cauliflower Black Rot',
+      hindi: 'फूलगोभी काला सड़न',
+      crop: 'Cauliflower',
+      image: cauliflowerRot,
+      symptoms: 'V-shaped lesions, blackening of curd',
+      treatment: 'Copper bactericides, remove diseased plants',
+      prevention: 'Hot water seed treatment, crop rotation, proper field hygiene',
+      severity: 'High'
+    },
+    {
+      name: 'Groundnut Tikka Spot',
+      hindi: 'मूंगफली टिक्का धब्बा',
+      crop: 'Groundnut',
+      image: groundnutSpot,
+      symptoms: 'Dark circular spots with yellow halo on leaves',
+      treatment: 'Mancozeb or chlorothalonil spray',
+      prevention: 'Use disease-free seeds, crop rotation, proper spacing',
+      severity: 'Medium'
+    },
+    {
+      name: 'Soybean Rust',
+      hindi: 'सोयाबीन रस्ट',
+      crop: 'Soybean',
+      image: soybeanRust,
+      symptoms: 'Brown pustules on undersides of leaves',
+      treatment: 'Triazole fungicides, early detection critical',
+      prevention: 'Resistant varieties, monitor fields regularly, timely spraying',
+      severity: 'High'
+    },
+    {
+      name: 'Strawberry Leaf Scorch',
+      hindi: 'स्ट्रॉबेरी पत्ती झुलसा',
+      crop: 'Strawberry',
+      image: strawberryScorch,
+      symptoms: 'Purple-bordered spots on leaves',
+      treatment: 'Captan or copper fungicides',
+      prevention: 'Remove infected leaves, proper plant spacing, avoid overhead watering',
+      severity: 'Medium'
+    },
+    {
+      name: 'Ginger Soft Rot',
+      hindi: 'अदरक मुलायम सड़न',
+      crop: 'Ginger',
+      image: gingerRot,
+      symptoms: 'Water-soaked lesions on rhizomes, foul smell',
+      treatment: 'Remove infected rhizomes, improve drainage',
+      prevention: 'Use disease-free seed rhizomes, proper field drainage',
+      severity: 'High'
+    },
+    {
+      name: 'Citrus Canker',
+      hindi: 'नींबू कैंकर',
+      crop: 'Citrus',
+      image: citrusCanker,
+      symptoms: 'Raised corky lesions on fruits and leaves',
+      treatment: 'Copper sprays, prune infected branches',
+      prevention: 'Use disease-free nursery stock, windbreaks, sanitation',
+      severity: 'High'
+    },
+    {
+      name: 'Black Pepper Root Rot',
+      hindi: 'काली मिर्च जड़ सड़न',
+      crop: 'Black Pepper',
+      image: pepperRot,
+      symptoms: 'Wilting vines, yellowing leaves, root decay',
+      treatment: 'Remove infected vines, soil drenching with fungicides',
+      prevention: 'Proper drainage, avoid waterlogging, use resistant varieties',
       severity: 'High'
     }
   ];

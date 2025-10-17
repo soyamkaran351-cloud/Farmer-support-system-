@@ -14,6 +14,7 @@ import DiseaseGallery from "./pages/DiseaseGallery";
 import News from "./pages/News";
 import Schemes from "./pages/Schemes";
 import Techniques from "./pages/Techniques";
+import CropGuide from "./pages/CropGuide";
 import Chatbot from "./pages/Chatbot";
 import NotFound from "./pages/NotFound";
 
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/news" element={<ProtectedRoute><News /></ProtectedRoute>} />
               <Route path="/schemes" element={<ProtectedRoute><Schemes /></ProtectedRoute>} />
               <Route path="/techniques" element={<ProtectedRoute><Techniques /></ProtectedRoute>} />
+              <Route path="/crop-guide" element={<ProtectedRoute><CropGuide /></ProtectedRoute>} />
               <Route path="/chatbot" element={<ProtectedRoute><Chatbot /></ProtectedRoute>} />
               <Route path="/disease-gallery" element={<ProtectedRoute><DiseaseGallery /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
