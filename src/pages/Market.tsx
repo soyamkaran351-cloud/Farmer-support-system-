@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Search, TrendingUp, ArrowLeft, TrendingDown } from 'lucide-react';
+import { Search, TrendingUp, ArrowLeft, RefreshCw, TrendingDown } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
@@ -17,13 +17,43 @@ export default function Market() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [userState, setUserState] = useState<string>('');
+  const [refreshing, setRefreshing] = useState(false);
   const [priceStats, setPriceStats] = useState<any>(null);
 
   useEffect(() => {
     getUserLocation();
-    fetchPrices();
+    fetchLiveData();
   }, []);
 
+  const fetchLiveData = async () => {
+    setLoading(true);
+    try {
+      // Fetch latest market data from edge function
+      const { error: fetchError } = await supabase.functions.invoke('fetch-market-prices');
+      
+      if (fetchError) {
+        console.error('Error fetching live data:', fetchError);
+      }
+      
+      // Wait a moment for data to be inserted
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Fetch today's prices
+      await fetchPrices();
+    } catch (error) {
+      console.error('Error in fetchLiveData:', error);
+      toast.error('Failed to fetch live market data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await fetchLiveData();
+    setRefreshing(false);
+    toast.success('Market data refreshed!');
+  };
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -48,7 +78,6 @@ export default function Market() {
   };
 
   const fetchPrices = async () => {
-    setLoading(true);
     try {
       const today = new Date().toISOString().split('T')[0];
       
@@ -80,8 +109,6 @@ export default function Market() {
     } catch (error) {
       console.error('Error fetching prices:', error);
       toast.error('Failed to load market prices');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -119,9 +146,18 @@ export default function Market() {
               {t('marketPrices')}
             </h1>
             <p className="text-muted-foreground mt-2">
-              📅 Today's Market Data {userState && `• 📍 ${userState}`}
+              📅 Today's Live Market Data {userState && `• 📍 ${userState}`}
             </p>
           </div>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={handleRefresh}
+            disabled={refreshing}
+          >
+            <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
+            Refresh
+          </Button>
         </div>
 
         {priceStats && (
