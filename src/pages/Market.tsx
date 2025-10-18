@@ -238,6 +238,7 @@ export default function Market() {
                     <TableHead>{t('price')} ({t('perQuintal')})</TableHead>
                     <TableHead>Market</TableHead>
                     <TableHead>State</TableHead>
+                    <TableHead>Date</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -247,6 +248,7 @@ export default function Market() {
                       <TableCell className="text-accent font-semibold">₹{price.price_per_quintal}</TableCell>
                       <TableCell>{price.market_name}</TableCell>
                       <TableCell>{price.state}</TableCell>
+                      <TableCell>{new Date(price.date).toLocaleDateString()}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
