@@ -3,7 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Newspaper, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Newspaper } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
@@ -14,43 +14,13 @@ export default function News() {
   const navigate = useNavigate();
   const [news, setNews] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    fetchLiveNews();
+    fetchNews();
   }, []);
 
-  const fetchLiveNews = async () => {
-    setLoading(true);
-    try {
-      // Fetch latest news from edge function
-      const { error: fetchError } = await supabase.functions.invoke('fetch-news');
-      
-      if (fetchError) {
-        console.error('Error fetching live news:', fetchError);
-      }
-      
-      // Wait a moment for data to be inserted
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Fetch news from database
-      await fetchNews();
-    } catch (error) {
-      console.error('Error in fetchLiveNews:', error);
-      toast.error('Failed to fetch latest news');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleRefresh = async () => {
-    setRefreshing(true);
-    await fetchLiveNews();
-    setRefreshing(false);
-    toast.success('News refreshed!');
-  };
-
   const fetchNews = async () => {
+    setLoading(true);
     try {
       const { data, error } = await supabase
         .from('farmer_news')
@@ -61,6 +31,9 @@ export default function News() {
       setNews(data || []);
     } catch (error) {
       console.error('Error fetching news:', error);
+      toast.error('Failed to load news');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -91,17 +64,8 @@ export default function News() {
             <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Latest News
             </h1>
-            <p className="text-muted-foreground">Live updates on agriculture, pest management & global farming</p>
+            <p className="text-muted-foreground">Agriculture, pest management & global farming updates</p>
           </div>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={handleRefresh}
-            disabled={refreshing}
-          >
-            <RefreshCw className={`h-4 w-4 mr-2 ${refreshing ? 'animate-spin' : ''}`} />
-            Refresh
-          </Button>
         </div>
 
         {loading ? (
