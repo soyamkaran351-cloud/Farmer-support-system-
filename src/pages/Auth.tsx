@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -7,13 +7,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Mail, Lock, User, Phone, Sparkles, Leaf } from 'lucide-react';
-import heroBanner from '@/assets/hero-banner.jpg';
+import { SplashScreen } from '@/components/SplashScreen';
+import authBackground from '@/assets/auth-background.jpg';
 import farmerLogo from '@/assets/farmer-logo.png';
 
 export default function Auth() {
   const { t } = useLanguage();
   const { signIn, signUp } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   // Login form
   const [loginEmail, setLoginEmail] = useState('');
@@ -24,6 +26,23 @@ export default function Auth() {
   const [signupPassword, setSignupPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
+
+  // Show splash screen only on first visit
+  useEffect(() => {
+    const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
+    if (hasSeenSplash) {
+      setShowSplash(false);
+    }
+  }, []);
+
+  const handleSplashComplete = () => {
+    sessionStorage.setItem('hasSeenSplash', 'true');
+    setShowSplash(false);
+  };
+
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />;
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,20 +70,26 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen grid md:grid-cols-2 relative overflow-hidden">
+      {/* Beautiful background image */}
+      <div className="fixed inset-0 z-0">
+        <img
+          src={authBackground}
+          alt="Agricultural landscape"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/30 to-accent/40 backdrop-blur-sm"></div>
+      </div>
+
       {/* Decorative background elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       {/* Left side - Enhanced Image with overlay */}
-      <div className="hidden md:flex relative overflow-hidden">
-        <img
-          src={heroBanner}
-          alt="Indian farmers"
-          className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-secondary/90 to-accent/95 flex items-center justify-center p-12">
+      <div className="hidden md:flex relative overflow-hidden z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-secondary/50 to-accent/60 backdrop-blur-sm"></div>
+        <div className="relative flex items-center justify-center p-12">
           <div className="text-center text-white space-y-6 max-w-md relative">
             {/* Floating leaf decorations */}
             <div className="absolute -top-8 -left-8 opacity-20">
@@ -111,8 +136,9 @@ export default function Auth() {
       </div>
 
       {/* Right side - Enhanced Auth forms */}
-      <div className="flex items-center justify-center p-4 md:p-8 bg-background relative z-10">
-        <Card className="w-full max-w-md shadow-2xl animate-scale-in border-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-shadow duration-300">
+      <div className="flex items-center justify-center p-4 md:p-8 relative z-10">
+        <div className="absolute inset-0 bg-background/95 backdrop-blur-md"></div>
+        <Card className="w-full max-w-md shadow-2xl animate-scale-in border-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-shadow duration-300 relative z-20 bg-card/95 backdrop-blur-lg">
           <CardHeader className="text-center space-y-3 pb-6">
             <div className="md:hidden mb-2">
               <div className="relative inline-block">
