@@ -35,8 +35,7 @@ Integrated AI chatbot to answer farming-related queries in multiple languages.
 Voice support for low-literacy users.
 Provides personalized crop and market advice
 
-## you can see my project by clicking the link below: https://farmer-support-system.netlify.app/
-
+## you can see my project by clicking the link below: https://farmer-support-system.vercel.app/
 ## What technologies are used for this project?
 
 This project is built with:
