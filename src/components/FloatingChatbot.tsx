@@ -15,7 +15,12 @@ interface Message {
 
 export function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: 'assistant',
+      content: 'Hello! I\'m your AI farming assistant. Ask me anything about crops, diseases, weather, or farming techniques!'
+    }
+  ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -43,16 +48,19 @@ export function FloatingChatbot() {
 
       const assistantMessage: Message = {
         role: 'assistant',
-        content: data.response || 'Sorry, I could not process your request.'
+        content: data.message
       };
       setMessages(prev => [...prev, assistantMessage]);
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error('Failed to get response. Please try again.');
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: 'Sorry, I encountered an error. Please try again.'
-      }]);
+    } catch (error: any) {
+      console.error('Chatbot error:', error);
+      toast.error('Failed to get response');
+      setMessages(prev => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: 'Sorry, I encountered an error. Please try again.'
+        }
+      ]);
     } finally {
       setLoading(false);
     }
