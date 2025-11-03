@@ -113,6 +113,7 @@ export type Database = {
           crop_name: string
           date: string
           id: string
+          image_url: string | null
           market_name: string
           price_per_quintal: number
           state: string
@@ -122,6 +123,7 @@ export type Database = {
           crop_name: string
           date?: string
           id?: string
+          image_url?: string | null
           market_name: string
           price_per_quintal: number
           state: string
@@ -131,6 +133,7 @@ export type Database = {
           crop_name?: string
           date?: string
           id?: string
+          image_url?: string | null
           market_name?: string
           price_per_quintal?: number
           state?: string

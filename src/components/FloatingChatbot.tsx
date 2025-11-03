@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Card } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import farmerAvatar from '@/assets/farmer-avatar.jpg';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -70,20 +71,28 @@ export function FloatingChatbot() {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 animate-bounce"
+          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg hover:shadow-xl transition-all z-50 p-0 overflow-hidden"
           size="icon"
         >
-          <MessageCircle className="h-6 w-6" />
+          <img 
+            src={farmerAvatar} 
+            alt="AI Farmer Assistant" 
+            className="w-full h-full object-cover"
+          />
         </Button>
       )}
 
       {/* Chat Dialog */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-96 h-[600px] shadow-2xl z-50 flex flex-col animate-scale-in">
+        <Card className="fixed bottom-6 right-6 w-96 h-[600px] shadow-2xl z-50 flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-primary to-accent">
-            <div className="flex items-center gap-2">
-              <MessageCircle className="h-5 w-5 text-white" />
+            <div className="flex items-center gap-3">
+              <img 
+                src={farmerAvatar} 
+                alt="Farmer" 
+                className="h-10 w-10 rounded-full border-2 border-white object-cover"
+              />
               <h3 className="font-semibold text-white">AI Farm Assistant</h3>
             </div>
             <Button
@@ -101,8 +110,12 @@ export function FloatingChatbot() {
             <div className="space-y-4">
               {messages.length === 0 && (
                 <div className="text-center text-muted-foreground py-8">
-                  <MessageCircle className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                  <p className="text-sm">Ask me anything about farming!</p>
+                  <img 
+                    src={farmerAvatar} 
+                    alt="Farmer" 
+                    className="h-20 w-20 rounded-full mx-auto mb-3 object-cover border-2 border-primary/20"
+                  />
+                  <p className="text-sm font-medium">Ask me anything about farming!</p>
                   <p className="text-xs mt-2">Crops, diseases, techniques, weather...</p>
                 </div>
               )}

@@ -50,13 +50,10 @@ export default function Market() {
   const fetchPrices = async () => {
     setLoading(true);
     try {
-      const today = new Date().toISOString().split('T')[0];
-      
       const { data, error } = await supabase
         .from('market_prices')
         .select('*')
-        .eq('date', today)
-        .order('created_at', { ascending: false });
+        .order('crop_name', { ascending: true });
       
       if (error) throw error;
       
@@ -119,7 +116,7 @@ export default function Market() {
               {t('marketPrices')}
             </h1>
             <p className="text-muted-foreground mt-2">
-              📅 Today's Market Data {userState && `• 📍 ${userState}`}
+              📊 Latest Market Rates {userState && `• 📍 ${userState}`}
             </p>
           </div>
         </div>
@@ -198,21 +195,27 @@ export default function Market() {
               <Table>
                 <TableHeader>
                   <TableRow>
+                    <TableHead>Image</TableHead>
                     <TableHead>{t('crop')}</TableHead>
                     <TableHead>{t('price')} ({t('perQuintal')})</TableHead>
                     <TableHead>Market</TableHead>
                     <TableHead>State</TableHead>
-                    <TableHead>Date</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {filteredPrices.map((price) => (
                     <TableRow key={price.id} className="hover:bg-muted/50 transition-colors">
+                      <TableCell>
+                        <img 
+                          src={price.image_url} 
+                          alt={price.crop_name}
+                          className="w-12 h-12 rounded-lg object-cover"
+                        />
+                      </TableCell>
                       <TableCell className="font-medium">{price.crop_name}</TableCell>
                       <TableCell className="text-accent font-semibold">₹{price.price_per_quintal}</TableCell>
                       <TableCell>{price.market_name}</TableCell>
                       <TableCell>{price.state}</TableCell>
-                      <TableCell>{new Date(price.date).toLocaleDateString()}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
