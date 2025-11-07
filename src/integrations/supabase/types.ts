@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      agriculture_books: {
+        Row: {
+          author: string
+          category: string
+          content: string
+          cover_image: string | null
+          created_at: string
+          description: string
+          id: string
+          is_government_certified: boolean
+          language: string
+          pages: number | null
+          publication_year: number | null
+          publisher: string
+          title: string
+        }
+        Insert: {
+          author: string
+          category: string
+          content: string
+          cover_image?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          is_government_certified?: boolean
+          language?: string
+          pages?: number | null
+          publication_year?: number | null
+          publisher: string
+          title: string
+        }
+        Update: {
+          author?: string
+          category?: string
+          content?: string
+          cover_image?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          is_government_certified?: boolean
+          language?: string
+          pages?: number | null
+          publication_year?: number | null
+          publisher?: string
+          title?: string
+        }
+        Relationships: []
+      }
       disease_detections: {
         Row: {
           confidence: number | null

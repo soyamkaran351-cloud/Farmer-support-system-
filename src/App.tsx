@@ -17,6 +17,7 @@ import Schemes from "./pages/Schemes";
 import Techniques from "./pages/Techniques";
 import CropGuide from "./pages/CropGuide";
 import Chatbot from "./pages/Chatbot";
+import Books from "./pages/Books";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
               <Route path="/techniques" element={<ProtectedRoute><Techniques /></ProtectedRoute>} />
               <Route path="/crop-guide" element={<ProtectedRoute><CropGuide /></ProtectedRoute>} />
               <Route path="/chatbot" element={<ProtectedRoute><Chatbot /></ProtectedRoute>} />
+              <Route path="/books" element={<ProtectedRoute><Books /></ProtectedRoute>} />
               <Route path="/disease-gallery" element={<ProtectedRoute><DiseaseGallery /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>

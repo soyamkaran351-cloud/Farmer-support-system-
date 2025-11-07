@@ -2,7 +2,7 @@ import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Lightbulb, Sprout, Droplets, Bug, Sun, ArrowLeft, Fish, BugOff } from 'lucide-react';
+import { Lightbulb, Sprout, Droplets, Bug, Sun, ArrowLeft, Fish, BugOff, BookOpen } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import fisheriesImg from '@/assets/fisheries.jpg';
 import beekeepingImg from '@/assets/beekeeping.jpg';
@@ -171,6 +171,23 @@ export default function Techniques() {
                 </li>
               ))}
             </ul>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-elevated animate-fade-in mt-8 bg-gradient-to-r from-accent/10 to-primary/10 border-accent">
+          <CardHeader>
+            <CardTitle className="text-2xl flex items-center gap-2">
+              <BookOpen className="h-6 w-6 text-accent" />
+              Agriculture Books & Resources
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground mb-4">
+              Access government-certified agricultural books and comprehensive guides on modern farming, organic methods, crop protection, and water management. Read detailed chapters online for free!
+            </p>
+            <Button onClick={() => navigate('/books')} variant="outline" className="border-accent hover:bg-accent/10">
+              Browse Books <BookOpen className="ml-2 h-4 w-4" />
+            </Button>
           </CardContent>
         </Card>
       </div>
