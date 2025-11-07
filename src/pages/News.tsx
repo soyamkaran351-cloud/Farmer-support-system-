@@ -54,7 +54,7 @@ export default function News() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 animate-fade-in">
         <div className="flex items-center gap-4 mb-8">
           <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
             <ArrowLeft className="h-4 w-4 mr-2" />

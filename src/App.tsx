@@ -2,17 +2,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import { FloatingChatbot } from "./components/FloatingChatbot";
-
-const ChatbotWrapper = () => {
-  const location = useLocation();
-  const shouldShowChatbot = location.pathname !== '/auth';
-  
-  return shouldShowChatbot ? <FloatingChatbot /> : null;
-};
+import { UserGuide } from "@/components/UserGuide";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Weather from "./pages/Weather";
@@ -50,7 +43,7 @@ const App = () => (
       <BrowserRouter>
         <LanguageProvider>
           <AuthProvider>
-            <ChatbotWrapper />
+            <UserGuide />
             <Routes>
               <Route path="/auth" element={<Auth />} />
               <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />

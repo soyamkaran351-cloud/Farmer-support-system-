@@ -105,7 +105,7 @@ export default function Market() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 animate-fade-in">
         <div className="flex items-center gap-4 mb-8">
           <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
             <ArrowLeft className="h-4 w-4 mr-2" />
@@ -195,7 +195,6 @@ export default function Market() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Image</TableHead>
                     <TableHead>{t('crop')}</TableHead>
                     <TableHead>{t('price')} ({t('perQuintal')})</TableHead>
                     <TableHead>Market</TableHead>
@@ -203,15 +202,9 @@ export default function Market() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {filteredPrices.map((price) => (
-                    <TableRow key={price.id} className="hover:bg-muted/50 transition-colors">
-                      <TableCell>
-                        <img 
-                          src={price.image_url} 
-                          alt={price.crop_name}
-                          className="w-12 h-12 rounded-lg object-cover"
-                        />
-                      </TableCell>
+                  {filteredPrices.map((price, idx) => (
+                    <TableRow key={price.id} className="hover:bg-muted/50 transition-all duration-300 animate-fade-in"
+                      style={{ animationDelay: `${idx * 0.02}s` }}>
                       <TableCell className="font-medium">{price.crop_name}</TableCell>
                       <TableCell className="text-accent font-semibold">₹{price.price_per_quintal}</TableCell>
                       <TableCell>{price.market_name}</TableCell>
