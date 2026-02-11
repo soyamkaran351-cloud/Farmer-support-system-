@@ -12,7 +12,8 @@ import {
   Lightbulb,
   MessageCircle,
   LogOut,
-  Languages
+  Languages,
+  Sprout
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -36,6 +37,7 @@ export const Header = () => {
     { path: '/schemes', icon: FileText, label: t('schemes') },
     { path: '/techniques', icon: Lightbulb, label: t('techniques') },
     { path: '/chatbot', icon: MessageCircle, label: t('chatbot') },
+    { path: '/farm-guide', icon: Sprout, label: 'Farm Guide' },
   ];
 
   return (

@@ -17,6 +17,7 @@ import Techniques from "./pages/Techniques";
 import CropGuide from "./pages/CropGuide";
 import Chatbot from "./pages/Chatbot";
 import Books from "./pages/Books";
+import FarmGuide from "./pages/FarmGuide";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -56,6 +57,7 @@ const App = () => (
               <Route path="/chatbot" element={<ProtectedRoute><Chatbot /></ProtectedRoute>} />
               <Route path="/books" element={<ProtectedRoute><Books /></ProtectedRoute>} />
               <Route path="/disease-gallery" element={<ProtectedRoute><DiseaseGallery /></ProtectedRoute>} />
+              <Route path="/farm-guide" element={<ProtectedRoute><FarmGuide /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AuthProvider>
