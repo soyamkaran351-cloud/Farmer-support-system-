@@ -18,6 +18,7 @@ export default function Dashboard() {
     { title: t('schemes'), desc: 'Government aid', icon: FileText, path: '/schemes', color: 'from-yellow-500 to-amber-500' },
     { title: t('techniques'), desc: 'Farming tips', icon: Lightbulb, path: '/techniques', color: 'from-indigo-500 to-violet-500' },
     { title: t('chatbot'), desc: 'Ask AI', icon: MessageCircle, path: '/chatbot', color: 'from-teal-500 to-cyan-500' },
+    { title: 'Farm Guide', desc: 'Crops & Herbs', icon: Sprout, path: '/farm-guide', color: 'from-lime-500 to-green-500' },
   ];
 
   return (
