@@ -315,3 +315,148 @@ export const herbs: Herb[] = [
   { name: 'Coriander (Dhania)', type: 'Culinary', uses: 'Fresh garnish, spice (seeds), essential oil', climate: '15-25°C', duration: '45-60 days (leaf), 90-120 days (seed)', steps: ['Split seeds gently; soak overnight', 'Sow in rows 20 cm apart', 'Light irrigation after sowing', 'Thin seedlings to 5 cm at 15 days', 'Apply nitrogen at 30 DAS for leaf crop', 'Harvest leaves at 45-60 days', 'For seed: let plants flower and mature', 'Thresh dried plants for seeds'] },
   { name: 'Brahmi', type: 'Medicinal', uses: 'Memory enhancement, anxiety relief, Ayurvedic medicine', climate: '25-40°C', duration: 'Perennial (first harvest 90 days)', steps: ['Propagate from stem cuttings', 'Plant in marshy areas at 20×20 cm', 'Requires abundant moisture', 'Apply organic manure', 'Harvest above-ground portion at 90 days', 'Leave 2-3 cm stem for regrowth', 'Take 3-4 harvests annually', 'Shade dry at 40°C'] },
 ];
+
+// ==================== HYDROPONICS / VERTICAL FARMING ====================
+
+import hydroLettuceImg from '@/assets/crops/hydro-lettuce.jpg';
+import hydroStrawberryImg from '@/assets/crops/hydro-strawberry.jpg';
+import hydroBasilImg from '@/assets/crops/hydro-basil.jpg';
+import hydroTomatoImg from '@/assets/crops/hydro-tomato.jpg';
+import hydroCucumberImg from '@/assets/crops/hydro-cucumber.jpg';
+import hydroSpinachImg from '@/assets/crops/hydro-spinach.jpg';
+import hydroPepperImg from '@/assets/crops/hydro-pepper.jpg';
+import hydroKaleImg from '@/assets/crops/hydro-kale.jpg';
+import hydroMintImg from '@/assets/crops/hydro-mint.jpg';
+import hydroMicrogreensImg from '@/assets/crops/hydro-microgreens.jpg';
+import hydroCherryTomatoImg from '@/assets/crops/hydro-cherry-tomato.jpg';
+import hydroBokchoyImg from '@/assets/crops/hydro-bokchoy.jpg';
+
+export interface HydroponicCrop {
+  name: string;
+  image: string;
+  system: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  growthTime: string;
+  phRange: string;
+  ecRange: string;
+  lightHours: string;
+  temperature: string;
+  spacing: string;
+  yieldPerPlant: string;
+  nutrients: string;
+  steps: string[];
+  products: string[];
+  tips: string;
+  benefits: string[];
+}
+
+export const hydroponicCrops: HydroponicCrop[] = [
+  {
+    name: 'Lettuce', image: hydroLettuceImg, system: 'NFT / DWC / Raft', difficulty: 'Beginner',
+    growthTime: '30-45 days', phRange: '5.5-6.5', ecRange: '0.8-1.2 mS/cm', lightHours: '12-16 hrs',
+    temperature: '15-22°C', spacing: '15-20 cm', yieldPerPlant: '150-300g', nutrients: 'Low N-P-K, Calcium rich',
+    steps: ['Germinate seeds in rockwool cubes or coco plugs for 7-10 days', 'Transfer seedlings to NFT channels or DWC rafts when 3-4 true leaves appear', 'Maintain nutrient solution at EC 0.8-1.2 and pH 5.5-6.5', 'Ensure water temperature stays below 22°C to prevent tip burn', 'Provide 12-16 hours of light (LED grow lights or natural)', 'Monitor for aphids and powdery mildew; use neem oil if needed', 'Harvest outer leaves first for continuous production (cut-and-come-again)', 'Full harvest at 30-45 days when heads are firm and full'],
+    products: ['Fresh Salad Greens', 'Sandwich Wraps', 'Smoothie Ingredient', 'Garnish'],
+    tips: 'Lettuce is the #1 recommended crop for hydroponic beginners. Use butterhead varieties for best results in DWC systems.',
+    benefits: ['Fastest growing hydroponic crop', '90% less water than soil farming', 'Year-round production possible', 'No soil-borne diseases']
+  },
+  {
+    name: 'Strawberry', image: hydroStrawberryImg, system: 'Vertical Tower / Dutch Bucket', difficulty: 'Intermediate',
+    growthTime: '60-90 days to first fruit', phRange: '5.5-6.2', ecRange: '1.0-1.5 mS/cm', lightHours: '14-16 hrs',
+    temperature: '18-24°C', spacing: '20-30 cm', yieldPerPlant: '300-500g/season', nutrients: 'High K during fruiting',
+    steps: ['Start with certified disease-free runners or transplants', 'Plant in vertical towers or Dutch buckets with perlite/coco coir mix', 'Maintain pH 5.5-6.2 and EC 1.0-1.5; increase K during flowering', 'Provide 14-16 hrs light with red/blue LED spectrum', 'Hand-pollinate flowers using a small paintbrush or fan', 'Remove runners to focus energy on fruit production', 'Monitor for spider mites and botrytis; maintain good air circulation', 'Harvest when fruits are 90%+ red; pick every 2-3 days'],
+    products: ['Fresh Berries', 'Strawberry Jam', 'Dried Strawberries', 'Strawberry Smoothies', 'Flavored Water'],
+    tips: 'Day-neutral varieties like Albion and San Andreas perform best in hydroponics as they fruit continuously.',
+    benefits: ['Premium pricing for off-season production', 'No soil-borne pathogens', 'Vertical systems maximize space', 'Cleaner fruit with less pest pressure']
+  },
+  {
+    name: 'Basil', image: hydroBasilImg, system: 'DWC / NFT / Kratky', difficulty: 'Beginner',
+    growthTime: '28-35 days', phRange: '5.5-6.5', ecRange: '1.0-1.6 mS/cm', lightHours: '14-18 hrs',
+    temperature: '20-28°C', spacing: '15-20 cm', yieldPerPlant: '50-100g per harvest', nutrients: 'Balanced NPK, extra Mg',
+    steps: ['Sow seeds in rockwool or rapid rooter plugs', 'Transplant to system at 2-3 true leaf stage (10-14 days)', 'Maintain nutrient solution EC 1.0-1.6 and pH 5.5-6.5', 'Provide strong light (14-18 hrs) to prevent leggy growth', 'Pinch flower buds immediately to encourage leaf production', 'Harvest top 1/3 of plant regularly to promote bushy growth', 'Replace plants every 2-3 months as they become woody', 'Keep temperature above 20°C; basil is cold-sensitive'],
+    products: ['Fresh Herb', 'Pesto Sauce', 'Dried Basil', 'Basil Essential Oil', 'Infused Olive Oil'],
+    tips: 'Genovese basil is the most popular variety. Thai basil and Purple basil also grow excellently in hydroponics.',
+    benefits: ['Extremely fast growth cycle', 'High market value herb', 'Multiple harvests per plant', 'Strong aroma in hydroponic systems']
+  },
+  {
+    name: 'Tomato', image: hydroTomatoImg, system: 'Dutch Bucket / Drip System', difficulty: 'Intermediate',
+    growthTime: '60-85 days to first harvest', phRange: '5.8-6.3', ecRange: '2.0-3.5 mS/cm', lightHours: '14-18 hrs',
+    temperature: '20-28°C', spacing: '40-60 cm', yieldPerPlant: '3-8 kg/season', nutrients: 'High Ca & K during fruiting',
+    steps: ['Start seeds in rockwool cubes; germinate at 25°C', 'Transplant to Dutch buckets with perlite at 4-6 true leaf stage', 'Install trellis support system for indeterminate varieties', 'Maintain EC 2.0-3.5 progressively; increase during fruiting', 'Prune suckers weekly; train single or double leader', 'Pollinate by vibrating flower clusters daily (electric toothbrush works!)', 'Monitor for blossom end rot (calcium deficiency) and adjust nutrients', 'Harvest when fruit is fully colored; pick every 2-3 days'],
+    products: ['Fresh Tomatoes', 'Tomato Sauce', 'Sun-dried Tomatoes', 'Tomato Paste', 'Ketchup', 'Tomato Juice'],
+    tips: 'Indeterminate cherry tomato varieties produce the highest yields in hydroponic systems. Use silicon supplements for stronger stems.',
+    benefits: ['Year-round production', '3-5x higher yield than field growing', 'No soil-borne wilts or nematodes', 'Superior flavor control via nutrients']
+  },
+  {
+    name: 'Cucumber', image: hydroCucumberImg, system: 'Dutch Bucket / Drip', difficulty: 'Intermediate',
+    growthTime: '50-70 days', phRange: '5.5-6.0', ecRange: '1.7-2.5 mS/cm', lightHours: '14-16 hrs',
+    temperature: '22-28°C', spacing: '30-45 cm', yieldPerPlant: '2-5 kg/season', nutrients: 'High K, moderate N',
+    steps: ['Sow seeds in coco plugs; germinate at 25-28°C', 'Transplant when first true leaf is fully expanded', 'Provide vertical trellis training; clip to string daily', 'Maintain EC 1.7-2.5 and pH 5.5-6.0', 'Use parthenocarpic varieties (no pollination needed indoors)', 'Remove lateral shoots below 60cm for better airflow', 'Harvest daily once fruiting begins; pick at 15-20cm length', 'Watch for powdery mildew; maintain humidity below 80%'],
+    products: ['Fresh Cucumbers', 'Pickles', 'Cucumber Juice', 'Salad Ingredient'],
+    tips: 'Seedless/parthenocarpic varieties like Beit Alpha and Mini Munch are ideal — they don\'t need pollination indoors.',
+    benefits: ['Very fast production cycle', 'Vertical growing saves space', 'No bitter fruits with proper nutrients', 'Premium pricing for seedless varieties']
+  },
+  {
+    name: 'Spinach', image: hydroSpinachImg, system: 'NFT / Vertical Racks / DWC', difficulty: 'Beginner',
+    growthTime: '25-40 days', phRange: '6.0-7.0', ecRange: '1.8-2.3 mS/cm', lightHours: '10-14 hrs',
+    temperature: '15-20°C', spacing: '10-15 cm', yieldPerPlant: '80-150g', nutrients: 'High N, Fe, Ca',
+    steps: ['Soak seeds for 24 hours in cool water before sowing', 'Sow in rockwool or peat plugs; keep cool (15-20°C)', 'Transfer to NFT or vertical racks at 3-4 leaf stage', 'Maintain cooler temperatures; spinach bolts in heat above 25°C', 'Provide moderate light 10-14 hrs; too much causes bolting', 'Ensure adequate iron in nutrient solution to prevent chlorosis', 'Harvest outer leaves or cut whole plant at base', 'Successive sowings every 2 weeks for continuous supply'],
+    products: ['Fresh Salad Greens', 'Smoothie Ingredient', 'Palak Paneer', 'Spinach Pasta', 'Baby Spinach'],
+    tips: 'Choose slow-bolt varieties like Bloomsdale or Space. Keep solution temperature below 20°C for best results.',
+    benefits: ['High nutritional value crop', 'Compact growth ideal for vertical farms', 'Quick turnaround time', 'Year-round cool-weather crop production']
+  },
+  {
+    name: 'Bell Pepper', image: hydroPepperImg, system: 'Dutch Bucket / Drip System', difficulty: 'Advanced',
+    growthTime: '70-90 days to first harvest', phRange: '5.5-6.5', ecRange: '2.0-2.8 mS/cm', lightHours: '14-18 hrs',
+    temperature: '21-27°C', spacing: '35-45 cm', yieldPerPlant: '1.5-3 kg/season', nutrients: 'High Ca, K, Mg',
+    steps: ['Start seeds in heated propagation tray at 25-28°C', 'Grow seedlings for 6-8 weeks before transplanting', 'Use Dutch buckets with perlite/vermiculite mix', 'Maintain EC 2.0-2.8 progressively; high calcium essential', 'Support plants with string training system', 'Remove first flower (king bloom) for better plant structure', 'Monitor closely for blossom end rot and calcium deficiency', 'Harvest when peppers are fully colored for maximum sweetness'],
+    products: ['Fresh Bell Peppers', 'Stuffed Peppers', 'Roasted Peppers', 'Pepper Powder', 'Pickled Peppers'],
+    tips: 'Red and yellow varieties command the highest market price. Takes patience — peppers have a long growing cycle but high profitability.',
+    benefits: ['Very high market value', 'Premium quality with controlled environment', 'No pesticide residues', 'Consistent color and size']
+  },
+  {
+    name: 'Kale', image: hydroKaleImg, system: 'NFT / DWC / Vertical Tower', difficulty: 'Beginner',
+    growthTime: '35-50 days', phRange: '5.5-6.5', ecRange: '1.2-1.8 mS/cm', lightHours: '12-16 hrs',
+    temperature: '15-24°C', spacing: '20-25 cm', yieldPerPlant: '200-400g', nutrients: 'Moderate NPK, extra Ca',
+    steps: ['Sow seeds in starter plugs; germinate at 18-22°C', 'Transplant at 3-4 true leaf stage to NFT or DWC', 'Maintain pH 5.5-6.5 and EC 1.2-1.8', 'Provide 12-16 hours of light', 'Cooler temperatures produce sweeter, less bitter leaves', 'Harvest lower leaves first; leave top growing point intact', 'Continue harvesting for 3-4 months per plant', 'Watch for aphids and caterpillars; use biological control'],
+    products: ['Fresh Kale Salad', 'Kale Chips', 'Smoothie Greens', 'Kale Pesto', 'Dehydrated Kale Powder'],
+    tips: 'Curly kale and Lacinato (dinosaur kale) both perform well. Slightly cooler temperatures produce the best flavor.',
+    benefits: ['Superfood with high demand', 'Continuous harvest over months', 'Cold-tolerant crop', 'Excellent for vertical farming']
+  },
+  {
+    name: 'Mint', image: hydroMintImg, system: 'DWC / NFT / Kratky', difficulty: 'Beginner',
+    growthTime: '20-30 days to first harvest', phRange: '5.5-6.5', ecRange: '1.2-1.6 mS/cm', lightHours: '12-16 hrs',
+    temperature: '18-25°C', spacing: '15-20 cm', yieldPerPlant: '50-100g per harvest', nutrients: 'Moderate N, balanced micro',
+    steps: ['Propagate from stem cuttings (roots in 7-10 days in water)', 'Transfer rooted cuttings to DWC or NFT system', 'Maintain EC 1.2-1.6 and pH 5.5-6.5', 'Provide 12-16 hours of light', 'Harvest regularly by cutting stems above leaf nodes', 'Pinch flower buds to maintain vegetative growth', 'Replace plants every 4-6 months as they become root-bound', 'Control spreading by keeping each plant in individual net pots'],
+    products: ['Fresh Herb', 'Mint Tea', 'Mojito Ingredient', 'Chutney', 'Essential Oil', 'Dried Mint'],
+    tips: 'Spearmint and peppermint both thrive. Mint grows aggressively — isolated net pots prevent root tangling.',
+    benefits: ['Extremely easy to grow', 'Very fast propagation', 'High demand in restaurants/bars', 'Multiple harvests continuously']
+  },
+  {
+    name: 'Microgreens', image: hydroMicrogreensImg, system: 'Tray / Shallow Flood', difficulty: 'Beginner',
+    growthTime: '7-14 days', phRange: '5.5-6.5', ecRange: '0.5-1.0 mS/cm', lightHours: '12-16 hrs',
+    temperature: '18-24°C', spacing: 'Dense sowing (broadcast)', yieldPerPlant: '200-400g per tray', nutrients: 'Very light or water only',
+    steps: ['Soak seeds for 8-12 hours (larger seeds like sunflower, peas)', 'Spread seeds densely on moistened growing medium (coco coir/hemp mat)', 'Cover trays with blackout dome for 3-4 days (blackout phase)', 'Remove dome and expose to light when shoots are 2-3 cm tall', 'Mist or bottom-water daily; keep medium moist not waterlogged', 'Harvest at 7-14 days when first true leaves appear', 'Cut just above the growing medium with sharp scissors', 'Clean and sanitize trays between cycles'],
+    products: ['Salad Topping', 'Smoothie Boost', 'Sandwich Garnish', 'Chef Plating', 'Nutrition Supplement'],
+    tips: 'Radish, sunflower, pea shoots, and broccoli microgreens are the most popular and profitable varieties.',
+    benefits: ['Fastest turnaround crop (7-14 days)', '40x more nutrients than mature plants', 'Minimal space required', 'Premium pricing per kg']
+  },
+  {
+    name: 'Cherry Tomato', image: hydroCherryTomatoImg, system: 'Dutch Bucket / Tower Garden', difficulty: 'Intermediate',
+    growthTime: '55-75 days to first fruit', phRange: '5.5-6.5', ecRange: '2.0-3.0 mS/cm', lightHours: '14-18 hrs',
+    temperature: '20-28°C', spacing: '30-45 cm', yieldPerPlant: '2-4 kg/season', nutrients: 'High K & Ca during fruiting',
+    steps: ['Start seeds in rockwool cubes at 25°C', 'Transplant to Dutch buckets at 5-6 leaf stage', 'Train up vertical strings; clip stems weekly', 'Increase EC gradually from 2.0 to 3.0 as plants mature', 'Vibrate flower clusters daily for pollination', 'Remove lower leaves as fruits ripen for airflow', 'Harvest when fruits are fully red and slightly soft', 'Prune suckers to maintain 1-2 main stems'],
+    products: ['Fresh Snacking', 'Salads', 'Bruschetta', 'Roasted Cherry Tomatoes', 'Tomato Confit'],
+    tips: 'Varieties like Sungold, Sweet Million, and Sakura are top performers in hydroponic systems.',
+    benefits: ['Continuous production for 6+ months', 'Higher sugar content than field-grown', 'Very popular with restaurants', 'Compact plants suit vertical systems']
+  },
+  {
+    name: 'Bok Choy', image: hydroBokchoyImg, system: 'NFT / DWC / Raft', difficulty: 'Beginner',
+    growthTime: '30-45 days', phRange: '6.0-7.0', ecRange: '1.5-2.0 mS/cm', lightHours: '10-14 hrs',
+    temperature: '15-22°C', spacing: '15-20 cm', yieldPerPlant: '150-250g', nutrients: 'Moderate N, high Ca',
+    steps: ['Sow seeds in starter plugs; germinate at 18-22°C', 'Transplant at 2-3 true leaf stage to NFT or DWC', 'Maintain cooler nutrient solution (below 22°C)', 'pH 6.0-7.0 slightly higher than most hydroponic crops', 'Provide moderate light; avoid excessive heat', 'Ensure calcium availability to prevent tip burn', 'Harvest whole plant at 30-45 days or pick outer leaves', 'Stagger sowings every 2 weeks for continuous harvest'],
+    products: ['Stir-fry', 'Asian Soups', 'Salad Greens', 'Kimchi', 'Steamed Vegetable'],
+    tips: 'Baby bok choy varieties mature faster (25-30 days) and command premium pricing in Asian grocery markets.',
+    benefits: ['Fast growing Asian green', 'High demand in urban markets', 'Compact growth suits vertical farms', 'Cool-weather crop grows year-round indoors']
+  },
+];
