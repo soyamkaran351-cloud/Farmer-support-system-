@@ -39,25 +39,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Last Updated Strip */}
-      <div className="container mx-auto px-4 pt-6">
-        <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted/60 border border-border">
-            <RefreshCw className="h-3.5 w-3.5 text-primary" />
-            <span className="text-muted-foreground">Market prices:</span>
-            <span className="font-medium">{formatRelative(marketUpdated)}</span>
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted/60 border border-border">
-            <RefreshCw className="h-3.5 w-3.5 text-primary" />
-            <span className="text-muted-foreground">News:</span>
-            <span className="font-medium">{formatRelative(newsUpdated)}</span>
-          </div>
-          <span className="text-xs text-muted-foreground w-full text-center mt-1">
-            Auto-refreshed daily in the background
-          </span>
-        </div>
-      </div>
-
       {/* Features Grid */}
       <div className="container mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold mb-8 text-center">{t('quickAccess')}</h2>
