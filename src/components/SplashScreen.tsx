@@ -99,7 +99,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
 
         {/* Tagline */}
         <p className="text-white/90 text-sm animate-fade-in" style={{ animationDelay: '0.6s' }}>
-          Your Complete Farming Support System
+          An AI based Modern Farming System
         </p>
       </div>
 
