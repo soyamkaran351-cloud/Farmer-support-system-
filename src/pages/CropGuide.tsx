@@ -73,6 +73,54 @@ export default function CropGuide() {
       benefits: 'Fastest growth, maximum yield, minimal resource use, disease-free',
       investment: '₹5-15 lakhs for commercial setup',
       color: 'from-purple-500 to-pink-500'
+    },
+    {
+      title: 'Cordyceps Farming',
+      hindi: 'कीड़ाजड़ी की खेती',
+      description: 'High-value medicinal mushroom (Cordyceps militaris) cultivation in lab-controlled conditions. Used in traditional medicine and modern nutraceuticals for immunity, stamina, and anti-aging. Grown on substrate of brown rice, soy peptone, and nutrients in glass jars at 18-22°C with 70-80% humidity and controlled light cycles. Sterile lab environment essential — autoclave, laminar flow hood, and HEPA-filtered grow rooms required. Harvest cycle 60-90 days. Dried Cordyceps fetches ₹3-8 lakhs/kg in domestic market and ₹15-20 lakhs/kg in export markets. One of the most profitable agri-ventures in India.',
+      benefits: 'Extremely high value, growing global demand, indoor year-round production',
+      investment: '₹5-25 lakhs for sterile lab setup',
+      color: 'from-orange-500 to-red-500'
+    },
+    {
+      title: 'Spirulina Cultivation',
+      hindi: 'स्पिरुलिना खेती',
+      description: 'Blue-green algae superfood cultivation in shallow open ponds or raceway tanks. Rich in protein (60-70%), vitamins, and antioxidants — used in health supplements and animal feed. Grows in alkaline water (pH 9-11) at 30-35°C with sunlight. Daily harvest possible after 25-30 days of initial culture. Yields 8-10 g/m²/day dry spirulina. Sells at ₹1,500-3,000/kg. Low water replacement, high productivity per square meter, and minimal land requirement make it ideal for arid regions.',
+      benefits: 'Daily harvest, high nutrition value, suitable for dry regions',
+      investment: '₹2-8 lakhs for 100-500 sq m setup',
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      title: 'Shiitake & Lion\'s Mane',
+      hindi: 'शिटाके और लायन्स मेन',
+      description: 'Premium gourmet and medicinal mushroom cultivation on hardwood sawdust blocks or supplemented logs. Shiitake (Lentinula edodes) prized for umami flavor and immune-boosting compounds, sells at ₹800-1,500/kg fresh and ₹4,000-6,000/kg dried. Lion\'s Mane (Hericium erinaceus) known for nerve regeneration and cognitive benefits, fetches ₹1,500-2,500/kg fresh. Requires fruiting chambers at 15-20°C, 85-95% humidity, and indirect light. Sterilized substrate bags inoculated with spawn produce 3-4 flushes over 4-6 months.',
+      benefits: 'Premium pricing, growing wellness market, low pest issues',
+      investment: '₹1-5 lakhs for small commercial setup',
+      color: 'from-amber-500 to-yellow-600'
+    },
+    {
+      title: 'Reishi Mushroom Farming',
+      hindi: 'रीशी मशरूम की खेती',
+      description: 'Cultivation of Ganoderma lucidum, the "mushroom of immortality," used for centuries in traditional medicine. Grown on hardwood logs or supplemented sawdust blocks in controlled humidity (90-95%) at 24-28°C. Long growth cycle of 4-6 months, but extremely high value — dried Reishi sells at ₹3,000-8,000/kg, and Reishi spore powder fetches ₹15,000-25,000/kg. Used in capsules, teas, tinctures, and skincare. Strong export potential to USA, Europe, and East Asia. Requires sterile inoculation lab and climate-controlled fruiting room.',
+      benefits: 'Very high value, strong export demand, medicinal market growth',
+      investment: '₹3-12 lakhs for commercial unit',
+      color: 'from-rose-500 to-red-600'
+    },
+    {
+      title: 'Algae & Microgreens',
+      hindi: 'शैवाल और माइक्रोग्रीन्स',
+      description: 'Indoor cultivation of nutrient-dense microgreens (broccoli, radish, sunflower, pea shoots) and edible algae. Microgreens harvested at 7-14 days, sell at ₹400-1,200/kg to restaurants, hotels, and health-conscious consumers. Grown on coco-peat or hemp mats in shallow trays under LED lights. Vertical rack systems maximize output — 100 sq ft can generate ₹40,000-80,000 monthly revenue. Minimal water, no pesticides, and quick turnover make this ideal for urban entrepreneurs and rooftop farmers.',
+      benefits: 'Quick harvest cycles, premium urban market, low space needs',
+      investment: '₹50,000 - ₹3 lakhs for indoor setup',
+      color: 'from-teal-500 to-green-600'
+    },
+    {
+      title: 'Truffle Cultivation',
+      hindi: 'ट्रफल की खेती',
+      description: 'Underground fungus (Tuber species) grown symbiotically on inoculated oak, hazelnut, or pine tree roots. Suited to Himalayan foothills (Himachal, Uttarakhand, Kashmir) with alkaline soil (pH 7.5-8.5) and cool climate. Long gestation period of 5-8 years before first harvest, but produces for 30+ years. Black truffles sell at ₹50,000-1,50,000/kg, white truffles at ₹2-5 lakhs/kg in international markets. Requires inoculated saplings, soil testing, and trained dogs/pigs for harvest detection. Niche, ultra-premium agribusiness.',
+      benefits: 'Ultra-premium pricing, decades of harvest, export potential',
+      investment: '₹3-10 lakhs per acre over 5-8 years',
+      color: 'from-stone-600 to-neutral-800'
     }
   ];
 
