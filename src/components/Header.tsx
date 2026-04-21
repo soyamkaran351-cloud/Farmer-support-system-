@@ -47,7 +47,7 @@ export const Header = () => {
           <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img src={farmerLogo} alt="Logo" className="h-10 w-10" />
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Kisan Sahayak
+              Agri Guru
             </span>
           </Link>
 

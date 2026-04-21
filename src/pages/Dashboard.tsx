@@ -34,7 +34,7 @@ export default function Dashboard() {
               <Sprout className="h-12 w-12" />
               {t('welcome')}
             </h1>
-            <p className="text-xl">Complete farming support at your fingertips</p>
+            <p className="text-xl">An AI based Modern Farming System</p>
           </div>
         </div>
       </div>
