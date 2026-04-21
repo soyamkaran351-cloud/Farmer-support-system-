@@ -71,7 +71,7 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           <div className="absolute inset-0 bg-white/30 rounded-full blur-3xl animate-pulse"></div>
           <img
             src={farmerLogo}
-            alt="Kisan Sahayak"
+            alt="Agri Guru"
             className="h-32 w-32 mx-auto relative z-10 drop-shadow-2xl animate-bounce-slow"
           />
         </div>
@@ -79,12 +79,12 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         {/* Title */}
         <div className="space-y-3">
           <h1 className="text-6xl font-bold text-white drop-shadow-2xl animate-fade-in tracking-tight">
-            Kisan Sahayak
+            Agri Guru
           </h1>
           <div className="flex items-center justify-center gap-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <Sparkles className="w-6 h-6 text-yellow-200 animate-pulse" />
             <p className="text-2xl text-white/95 font-light">
-              Empowering Farmers, Growing Future
+              An AI based Modern Farming System
             </p>
             <Sparkles className="w-6 h-6 text-yellow-200 animate-pulse" />
           </div>

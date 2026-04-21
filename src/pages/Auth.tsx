@@ -106,7 +106,7 @@ export default function Auth() {
             
             <div className="space-y-3">
               <h1 className="text-5xl font-bold animate-fade-in tracking-tight drop-shadow-lg">
-                Kisan Sahayak
+                Agri Guru
               </h1>
               <div className="flex items-center justify-center gap-2 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                 <Sparkles className="w-5 h-5 text-yellow-200" />
@@ -147,10 +147,10 @@ export default function Auth() {
               </div>
             </div>
             <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Kisan Sahayak
+              Agri Guru
             </CardTitle>
             <CardDescription className="text-base">
-              Your complete farming support system
+              An AI based Modern Farming System
             </CardDescription>
           </CardHeader>
           
