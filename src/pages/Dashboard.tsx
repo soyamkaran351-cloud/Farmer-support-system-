@@ -2,41 +2,13 @@ import { Header } from '@/components/Header';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Cloud, TrendingUp, Scan, Newspaper, FileText, Lightbulb, MessageCircle, Sprout, RefreshCw } from 'lucide-react';
+import { Cloud, TrendingUp, Scan, Newspaper, FileText, Lightbulb, MessageCircle, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
 import heroBanner from '@/assets/hero-banner.jpg';
-
-const formatRelative = (iso: string | null) => {
-  if (!iso) return '—';
-  const diffMs = Date.now() - new Date(iso).getTime();
-  const mins = Math.floor(diffMs / 60000);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return `${mins}m ago`;
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return `${hrs}h ago`;
-  const days = Math.floor(hrs / 24);
-  return `${days}d ago`;
-};
 
 export default function Dashboard() {
   const { t } = useLanguage();
   const { user } = useAuth();
-  const [marketUpdated, setMarketUpdated] = useState<string | null>(null);
-  const [newsUpdated, setNewsUpdated] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadTimestamps = async () => {
-      const [{ data: m }, { data: n }] = await Promise.all([
-        supabase.from('market_prices').select('created_at').order('created_at', { ascending: false }).limit(1).maybeSingle(),
-        supabase.from('farmer_news').select('created_at').order('created_at', { ascending: false }).limit(1).maybeSingle(),
-      ]);
-      setMarketUpdated(m?.created_at ?? null);
-      setNewsUpdated(n?.created_at ?? null);
-    };
-    loadTimestamps();
-  }, []);
 
   const features = [
     { title: t('weather'), desc: '7-day forecast', icon: Cloud, path: '/weather', color: 'from-blue-500 to-cyan-500' },
