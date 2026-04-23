@@ -1,6 +1,6 @@
-# Farmer Support System 
+# AGRI GURU - An ai based modern farming system 
 
-The Farmer Support System is an integrated digital platform designed to empower Indian farmers with the right information, tools, and insights to improve productivity, profitability, and sustainability. It serves as a one-stop solution combining crop insights, market trends, government schemes, weather forecasts, and agricultural news & techniques — all in one easy-to-use application.
+The  Agri Guru System is an integrated digital platform designed to empower Indian farmers with the right information, tools, and insights to improve productivity, profitability, and sustainability. It serves as a one-stop solution combining crop insights, market trends, government schemes, weather forecasts, and agricultural news & techniques — all in one easy-to-use application.
 
 ## project features:
 
@@ -34,6 +34,8 @@ Sends notifications when new schemes are launched.
 Integrated AI chatbot to answer farming-related queries in multiple languages.
 Voice support for low-literacy users.
 Provides personalized crop and market advice
+
+7.farm guide: this section provides crom growing methods and modern farming techniques like aeroponics/verticle farming. we have added herbs and other high yeild and profit crops
 
 ## you can see my project by clicking the link below: https://farmer-support-system.vercel.app/
 ## What technologies are used for this project?
